@@ -1,4 +1,4 @@
-# Global Marketplace using Stripe Connect
+# SaaS platform using Stripe Connect Standard
 
 This sample shows how to build a home-rental themed marketplace using [Stripe Payments](http://stripe.com/payments) and [Stripe Connect](https://stripe.com/connect) where customers can sign up and become renters (buyer) and owners (seller) of the marketplace.
 
