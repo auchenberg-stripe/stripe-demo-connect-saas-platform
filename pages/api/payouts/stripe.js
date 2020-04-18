@@ -23,20 +23,17 @@ export default requireAuthEndpoint(async (req, res) => {
     const redirect_uri = getHost(req) + '/stripe/callback';
 
     let stripeConnectParams = {
-      response_type: 'code',
-      redirect_uri: redirect_uri,
       client_id: clientId,
       scope: 'read_write',
+      response_type: 'code',
       'stripe_user[email]': userEmail,
       'stripe_user[first_name]': userFirstName,
       'stripe_user[last_name]': userLastName,
-      'stripe_user[business_type]': 'individual',
-      'stripe_user[country]': 'US',
     };
 
     let reqQuery = querystring.stringify(stripeConnectParams);
 
-    const location = `https://connect.stripe.com/express/oauth/authorize?${reqQuery}`;
+    const location = `https://connect.stripe.com/oauth/authorize?${reqQuery}`;
 
     return res.status(200).json({
       location: location,

@@ -15,7 +15,6 @@ class Client {
   }
 
   setContext(context) {
-    logger.log('APIclient.setContext');
     this.context = context;
   }
 
@@ -44,16 +43,18 @@ class Client {
     let baseUrl = this.getBaseUrl();
     let requestUrl = baseUrl + url;
 
+    let isPOST = ['post', 'put'].includes(method);
+
     logger.log('APIclient.makeRequest.requestUrl', requestUrl, this.token);
     try {
       const response = await fetch(requestUrl, {
         credentials: 'include',
         headers: {
-          'content-type': method == 'post' ? 'application/json' : '',
+          'content-type': isPOST ? 'application/json' : '',
           Authorization: this.token ? `Bearer ${this.token}` : '',
         },
         method: method,
-        body: method == 'post' ? JSON.stringify(requestData) : null,
+        body: isPOST ? JSON.stringify(requestData) : null,
       });
 
       if (response.ok) {

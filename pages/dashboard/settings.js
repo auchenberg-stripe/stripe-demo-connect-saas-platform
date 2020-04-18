@@ -3,8 +3,10 @@ import {redirect} from '../../utils/redirect';
 
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
+import DashboardPlatformSettings from '../../components/dashboardPlatformSettings';
 import DashboardHeader from '../../components/dashboardHeader';
-import PayoutSetup from '../../components/payoutSetup';
+
+
 class Dashboard extends React.Component {
   constructor(props) {
     super();
@@ -17,7 +19,7 @@ class Dashboard extends React.Component {
     return {
       profile: userProfile,
       platform: userPlatform,
-      dashboardType: 'dashboard',
+      dashboardType: 'settings',
     };
   }
 
@@ -29,13 +31,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-
-    let hasPayoutSetup =
-      this.props.platform &&
-      this.props.platform.stripe != null &&
-      this.props.platform.stripe.stripeUserId;
-      
-      
     return (
       <Layout
         isAuthenticated={this.props.isAuthenticated}
@@ -48,43 +43,25 @@ class Dashboard extends React.Component {
             dashboardType={this.props.dashboardType}
           />
 
-        <div className="row">
-            <div className="col-12">
+          <div className="row">
+            <div className="col-6">
               <div className="row">
-                <div className="col-12">
+                <div className="col-8">
                   <div className="clearfix">
-                    <h4>Your overview</h4>
+                    <h4>Settings</h4>
                   </div>
                 </div>
               </div>
-              <div className="row">
-                {hasPayoutSetup ? (
-                  <div />
-          ) : (
-              <div className="wrapper">
-                <PayoutSetup />
+              <DashboardPlatformSettings platform={this.props.platform} />
             </div>
-          )}
-                </div>
-              </div>
           </div>
         </div>
-
-
         <style jsx>{`
           .dashboard h4 {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 30px;
           }
-          .wrapper {
-            width: 100%;
-            height: 400px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }          
         `}</style>
       </Layout>
     );

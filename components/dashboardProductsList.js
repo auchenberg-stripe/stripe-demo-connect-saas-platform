@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-function DashboardBookingsList(props) {
+function DashboardProductsList(props) {
   const list = props.list ? [...props.list] : [];
   if (list.length < 6) {
     while (list.length < 6) {
@@ -11,18 +11,15 @@ function DashboardBookingsList(props) {
 
   if (list) {
     listItems = list.map((item) => (
-      <li className="listing-item" key={item.id}>
-        {item.listing && (
-          <Link href={`/transactions/` + item.id}>
+      <li className="item" key={item.id}>
+        {item.name && (
             <a>
-              <h4>{item.location}</h4>
-              <h3>{item.listing.title}</h3>
-              {<img src={item.listing.image} />}
+              <h4>{item.name}</h4>
+              {<img src={item.images} />}
             </a>
-          </Link>
         )}
         <style jsx>{`
-          .listing-item {
+          .item {
             height: 325px;
             position: relative;
 
@@ -31,7 +28,7 @@ function DashboardBookingsList(props) {
             border-radius: 4px;
           }
 
-          .listing-item h3 {
+          .item h3 {
             position: absolute;
             bottom: 20px;
             left: 20px;
@@ -45,7 +42,7 @@ function DashboardBookingsList(props) {
             max-width: 50%;
           }
 
-          .listing-item h4 {
+          .item h4 {
             position: absolute;
             bottom: 60px;
             left: 20px;
@@ -59,7 +56,7 @@ function DashboardBookingsList(props) {
             max-width: 50%;
           }
 
-          .listing-item img {
+          .item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -74,11 +71,11 @@ function DashboardBookingsList(props) {
   }
 
   return (
-    <ul className="bookings-list">
+    <ul className="products-list">
       {listItems}
 
       <style jsx>{`
-        .bookings-list {
+        .products-list {
           list-style: none;
           padding: 0;
           margin: 0;
@@ -90,13 +87,13 @@ function DashboardBookingsList(props) {
         }
 
         @media (min-width: 768px) {
-          .bookings-list {
+          .products-list {
             grid-template-columns: repeat(2, 1fr);
           }
         }
 
         @media (min-width: 992px) { {
-          .bookings-list {
+          .products-list {
             grid-template-columns: repeat(3, 1fr);
           }
         }        
@@ -105,4 +102,4 @@ function DashboardBookingsList(props) {
   );
 }
 
-export default DashboardBookingsList;
+export default DashboardProductsList;

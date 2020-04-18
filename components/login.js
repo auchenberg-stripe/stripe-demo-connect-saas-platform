@@ -16,8 +16,7 @@ class Login extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.loginAsRenter = this.loginAsRenter.bind(this);
-    this.loginAsSeller = this.loginAsSeller.bind(this);
+    this.loginAsDemo = this.loginAsDemo.bind(this);
   }
 
   handleChange(event) {
@@ -30,16 +29,9 @@ class Login extends Component {
     });
   }
 
-  loginAsRenter() {
+  loginAsDemo() {
     this.setState({
-      email: 'renter@kavholm.com',
-      password: 'test',
-    });
-  }
-
-  loginAsSeller() {
-    this.setState({
-      email: 'owner@kavholm.com',
+      email: 'hello@collectivecoffee.com',
       password: 'test',
     });
   }
@@ -86,17 +78,11 @@ class Login extends Component {
           <form onSubmit={this.handleSubmit}>
             <button
               className="btn btn-secondary btn-half"
-              onClick={this.loginAsRenter}
+              onClick={this.loginAsDemo}
             >
-              Renter demo
+              CollectiveCoffee demo
             </button>
 
-            <button
-              className="btn btn-secondary btn-half right"
-              onClick={this.loginAsSeller}
-            >
-              Owner demo
-            </button>
             <input
               className="icon-input new-section email"
               type="email"

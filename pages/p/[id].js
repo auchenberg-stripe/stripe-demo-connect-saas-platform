@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Layout from '../components/layout';
-import HomeSearchForm from '../components/bookingSearchForm';
+import Layout from '../../components/layout';
 
 class Home extends React.Component {
   render() {
@@ -15,7 +14,7 @@ class Home extends React.Component {
           <div className="splash-image">
             <div className="container">
               <div className="popover">
-                <h1>Manage your coffee roastery from one unified platform</h1>
+                <h1>WELCOME TO PLATFOMR</h1>
 
                 Roastery gives you your own platform that enables you manage your inventory, your roasting schedules and gives you a wholesale marketplace for easy online commerce.
                 
@@ -27,28 +26,6 @@ class Home extends React.Component {
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="annotation">
-            <p>
-              <img src="static/stripe.svg" width="60" />
-              Roastery is a{' '}
-              <a className="stripe" href="https://stripe.com">
-                Stripe
-              </a>{' '}
-              demo that uses{' '}
-              <a href="https://stripe.com/connect" target="_blank">
-                Connect
-              </a>{' '}
-              to build a SaaS platfrom.{' '}
-              <a
-                className="github arrow"
-                href="https://github.com/stripe/stripe-demo-connect-standard-saas-platform"
-                target="_blank"
-              >
-                View on GitHub
-              </a>
-            </p>
           </div>
         </div>
         <style jsx>{`

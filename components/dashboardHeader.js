@@ -71,22 +71,46 @@ class DashboardHeader extends Component {
                   <a
                     className={
                       "nav-link " +
-                      (this.props.dashboardType == "renter" ? "active" : "")
+                      (this.props.dashboardType == "dashboard" ? "active" : "")
                     }
                   >
-                    Your trips
+                    Dashboard
                   </a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/dashboard/host">
+                <Link href="/dashboard">
                   <a
                     className={
                       "nav-link " +
-                      (this.props.dashboardType == "host" ? "active" : "")
+                      (this.props.dashboardType == "orders" ? "active" : "")
                     }
                   >
-                    Your listings
+                    Orders
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/dashboard/products">
+                  <a
+                    className={
+                      "nav-link " +
+                      (this.props.dashboardType == "products" ? "active" : "")
+                    }
+                  >
+                    Products
+                  </a>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link href="/dashboard/settings">
+                  <a
+                    className={
+                      "nav-link " +
+                      (this.props.dashboardType == "settings" ? "active" : "")
+                    }
+                  >
+                    Settings
                   </a>
                 </Link>
               </li>

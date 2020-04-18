@@ -29,10 +29,9 @@ class PayoutSetup extends Component {
       <>
         <div className="text-center box">
           <img src="/static/icon-bank.svg" className="icon" />
-          <h3>Set up payouts to list on Kavholm</h3>
+          <h3>To continue you need to setup payments on Roastery</h3>
           <p>
-            Kavholm partners with Stripe to transfer earnings to your bank
-            account.
+            Roastery partners with Stripe for payments and payouts
           </p>
 
           <a
@@ -40,7 +39,7 @@ class PayoutSetup extends Component {
             onClick={this.handleConnect}
             href="#"
           >
-            Set up payouts
+            Connect your Stripe account
           </a>
 
           <p className="text-center notice">

@@ -3,8 +3,10 @@ import {redirect} from '../../utils/redirect';
 
 import Layout from '../../components/layout';
 import API from '../../helpers/api';
+import DashboardProductsList from '../../components/dashboardProductsList';
 import DashboardHeader from '../../components/dashboardHeader';
-import PayoutSetup from '../../components/payoutSetup';
+import NewButton from '../../components/newButton';
+
 class Dashboard extends React.Component {
   constructor(props) {
     super();
@@ -12,12 +14,12 @@ class Dashboard extends React.Component {
 
   static async getInitialProps(context) {
     let userProfile = await API.makeRequest('get', '/api/profile');
-    let userPlatform = await API.makeRequest('get', '/api/profile/platform');
+    let products = await API.makeRequest('get', '/api/products');
 
     return {
       profile: userProfile,
-      platform: userPlatform,
-      dashboardType: 'dashboard',
+      products: products,
+      dashboardType: 'products',
     };
   }
 
@@ -29,13 +31,6 @@ class Dashboard extends React.Component {
   }
 
   render() {
-
-    let hasPayoutSetup =
-      this.props.platform &&
-      this.props.platform.stripe != null &&
-      this.props.platform.stripe.stripeUserId;
-      
-      
     return (
       <Layout
         isAuthenticated={this.props.isAuthenticated}
@@ -48,43 +43,31 @@ class Dashboard extends React.Component {
             dashboardType={this.props.dashboardType}
           />
 
-        <div className="row">
+          <div className="row">
             <div className="col-12">
               <div className="row">
-                <div className="col-12">
+                <div className="col-8">
                   <div className="clearfix">
-                    <h4>Your overview</h4>
+                    <h4>Your products</h4>
                   </div>
                 </div>
-              </div>
-              <div className="row">
-                {hasPayoutSetup ? (
-                  <div />
-          ) : (
-              <div className="wrapper">
-                <PayoutSetup />
-            </div>
-          )}
+                <div className="col-4">
+                  <NewButton
+                    label="Edit products on Stripe"
+                    link="https://dashboard.stripe.com/test/products"
+                  />
                 </div>
               </div>
+              <DashboardProductsList list={this.props.products} />
+            </div>
           </div>
         </div>
-
-
         <style jsx>{`
           .dashboard h4 {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 30px;
           }
-          .wrapper {
-            width: 100%;
-            height: 400px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }          
         `}</style>
       </Layout>
     );

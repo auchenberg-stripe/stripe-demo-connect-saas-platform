@@ -18,9 +18,6 @@ let makeStripeConnectRequest = async (code) => {
   };
 
   let url = 'https://connect.stripe.com/oauth/token';
-
-  logger.log('StripeSetup.makeStripeConnectRequest.params', params);
-
   return await fetch(url, {
     method: 'POST',
     body: JSON.stringify(params),
@@ -32,14 +29,14 @@ let makeStripeConnectRequest = async (code) => {
     });
 };
 
-let updateUserAccount = async (authenticatedUserId, stripeUserId) => {
+let updatePlatform = async (authenticatedUserId, stripeUserId) => {
   let stripeObject = {
     stripeUserId: stripeUserId,
   };
 
   return storage
-    .get('users')
-    .find({userId: authenticatedUserId})
+    .get('platforms')
+    .find({ownerUserId: authenticatedUserId})
     .assign({
       stripe: stripeObject,
     })
@@ -55,8 +52,7 @@ export default requireAuthEndpoint(async (req, res) => {
     // 1) Post the authorization code to Stripe to complete the Express onboarding flow
     let stripeConnectRequest = await makeStripeConnectRequest(code);
 
-    console.log('stripeConnectRequest', stripeConnectRequest);
-    // 2) Update User account with StripeUserId
+    // 2) Update the users platform  with StripeUserId
     let stripeUserId = stripeConnectRequest.stripe_user_id;
 
     if (!stripeUserId) {
@@ -64,7 +60,7 @@ export default requireAuthEndpoint(async (req, res) => {
       return res.status(400).json({msg: 'Connect request to Stripe failed'});
     }
 
-    updateUserAccount(authenticatedUserId, stripeUserId);
+    updatePlatform(authenticatedUserId, stripeUserId);
 
     return res.status(200).json({status: 'ok'});
   } catch (err) {

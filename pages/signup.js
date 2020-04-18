@@ -14,10 +14,10 @@ class Signup extends React.Component {
           <div className="splash-image">
             <div className="container">
               <div className="box popover">
-                <h1>Create an account</h1>
+                <h1>Create an platform</h1>
                 <p className="supporting-text">
-                  Create a new account, or sign in with one of{' '}
-                  <a href="/login">our demo accounts on login</a>.
+                  Create a new platform, or sign in with one of{' '}
+                  <a href="/login">our demo accounts on login</a>
                 </p>
                 <SignupForm />
               </div>

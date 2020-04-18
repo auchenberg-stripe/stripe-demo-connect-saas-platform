@@ -36,10 +36,10 @@ class NavProfile extends React.Component {
             aria-labelledby="navbarDropdown"
           >
             <Link href="/dashboard">
-              <a className="dropdown-item">Dashboard</a>
+              <a className="dropdown-item">Platform dashboard</a>
             </Link>
             <Link href="/profile">
-              <a className="dropdown-item">Profile</a>
+              <a className="dropdown-item">Your Profile</a>
             </Link>
             <a className="dropdown-item" href="#" onClick={this.handleLogout}>
               Log out
@@ -52,7 +52,7 @@ class NavProfile extends React.Component {
         <>
           <li className="navitem d-flex">
             <Link href="/signup">
-              <a className="btn">Create account</a>
+              <a className="btn">Create platform</a>
             </Link>
           </li>
 

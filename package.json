@@ -1,5 +1,5 @@
 {
-  "name": "stripe-demo-connect-kavholm-marketplace",
+  "name": "stripe-demo-connect-standard-saas-platform",
   "license": "MIT",
   "scripts": {
     "dev": "next",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stripe/stripe-demo-connect-kavholm-marketplace"
+    "url": "https://github.com/stripe/stripe-demo-connect-standard-saas-platform"
   },
   "dependencies": {
     "@google-cloud/storage": "^4.2.0",

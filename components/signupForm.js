@@ -11,6 +11,7 @@ class SignupForm extends Component {
     super(props);
 
     this.state = {
+      platformName: '',
       firstName: '',
       lastName: '',
       email: '',
@@ -48,6 +49,16 @@ class SignupForm extends Component {
       <>
         <div className="signup-form">
           <form onSubmit={this.handleSubmit}>
+            <input
+              className="new-section name"
+              type="text"
+              id="platformName"
+              name="platformName"
+              placeholder="Platform name"
+              value={this.state.platformName}
+              onChange={this.handleChange}
+              required
+            />
             <input
               className="new-section name"
               type="text"
@@ -93,7 +104,7 @@ class SignupForm extends Component {
             />
 
             <button type="submit" className="btn btn-primary btn-full">
-              Create account
+              Create platform
             </button>
 
             <p className={`error ${this.state.error && 'show'}`}>
