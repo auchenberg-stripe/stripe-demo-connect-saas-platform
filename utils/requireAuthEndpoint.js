@@ -21,12 +21,11 @@ let requireAuthEndpoint = (fn) => {
       const token = bearerToken.replace('Bearer ', '');
       let decodedToken = validateToken(token);
       req.authToken = decodedToken;
+      API.setToken(token);
     } catch (err) {
-      if (!whitelisted) {
         res.writeHead(401);
         res.end('invalid token in Authorization header');
         return;
-      }
     }
 
     return fn(req, res);
