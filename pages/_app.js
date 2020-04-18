@@ -8,7 +8,7 @@ import cookie from 'js-cookie';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default class GlobalMarketplaceApp extends App {
+export default class GlobalApp extends App {
   static getAuthenticationState(appContext) {
     let token = '';
 
@@ -28,7 +28,7 @@ export default class GlobalMarketplaceApp extends App {
 
   static async getInitialProps(appContext) {
     logger.log('*****************************');
-    logger.log('GlobalMarketplaceApp.app.ready');
+    logger.log('GlobalApp.app.ready');
     logger.log('*****************************');
 
     let {token, isAuthenticated} = this.getAuthenticationState(appContext);
