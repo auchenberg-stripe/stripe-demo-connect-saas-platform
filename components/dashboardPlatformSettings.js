@@ -44,7 +44,7 @@ class DashboardPlatformSettings extends Component {
   render() {
     return (
       <>
-        <div className="listing-form">
+        <div className="form">
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <label htmlFor="title">Platform name</label>
@@ -65,7 +65,7 @@ class DashboardPlatformSettings extends Component {
                 className="form-control"
                 type="text"
                 disabled
-                value={'http://roastey.com/' + this.state.slug}
+                value={'http://roastey.com/p/' + this.state.slug}
               />
             </div>
 
@@ -93,9 +93,8 @@ class DashboardPlatformSettings extends Component {
           </form>
         </div>
         <style jsx>{`
-          .listing-form {
+          .form {
             margin: 0;
-            padding: 20px 0 0;
           }
 
           label {

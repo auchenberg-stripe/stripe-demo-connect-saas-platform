@@ -8,8 +8,8 @@ export default requireAuthEndpoint(async (req, res) => {
   try {
     storage
     .get('platforms')
-      .filter({ownerId: authenticatedUserId})    
-      .unset('stripeId')
+      .find({ownerUserId: authenticatedUserId})    
+      .unset('stripe')
       .write();
 
     return res.status(200).json('ok');

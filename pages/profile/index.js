@@ -24,11 +24,6 @@ class Profile extends React.Component {
     }
   }
 
-  disconnectStripeAccount = async () => {
-    let req = await API.makeRequest('post', '/api/profile/disconnect_stripe');
-    redirect('/dashboard');
-  };
-
   clearTransactions = async () => {
     let req = await API.makeRequest('post', '/api/profile/clear_transactions');
     redirect('/dashboard');
@@ -49,27 +44,6 @@ class Profile extends React.Component {
           <pre className="profile-details bg-light">
             <code>{JSON.stringify(profile, null, 2)}</code>
           </pre>
-
-          <h4>Admin</h4>
-          <button
-            className="btn btn-secondary"
-            onClick={this.clearTransactions}
-          >
-            Clear trips
-          </button>
-
-          {profile.stripe && (
-            <>
-              <br />
-              <br />
-              <button
-                className="btn btn-secondary"
-                onClick={this.disconnectStripeAccount}
-              >
-                Disconnect Stripe account
-              </button>
-            </>
-          )}
         </div>
         <style jsx>{`
           .profile h4 {

@@ -23,6 +23,11 @@ class Dashboard extends React.Component {
     };
   }
 
+  disconnectStripeAccount = async () => {
+    await API.makeRequest('post', '/api/profile/disconnect_stripe');
+    redirect('/dashboard/settings');
+  };  
+
   componentDidMount() {
     // TODO: Move this to a server side check
     if (!this.props.isAuthenticated) {
@@ -48,18 +53,32 @@ class Dashboard extends React.Component {
               <div className="row">
                 <div className="col-8">
                   <div className="clearfix">
-                    <h4>Settings</h4>
+                    <h3>Settings</h3>
                   </div>
                 </div>
               </div>
+
+              <h4>Platform</h4>
               <DashboardPlatformSettings platform={this.props.platform} />
+
+              {this.props.platform.stripe && (
+            <>
+            <h4>Stripe</h4>
+              <button type="submit" className="btn-submit btn btn-secondary" onClick={this.disconnectStripeAccount}>
+              Disconnect Stripe account
+            </button>
+            </>
+          )}
+
+
+
             </div>
           </div>
         </div>
         <style jsx>{`
           .dashboard h4 {
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 20px;
+            margin-top: 30px;
             margin-bottom: 30px;
           }
         `}</style>
