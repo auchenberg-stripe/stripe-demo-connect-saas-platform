@@ -14,15 +14,13 @@ class AuthStripeCallback extends React.Component {
 
   async finalize() {
     let code = Router.router.query.code;
-
-    logger.log('code', code);
     try {
       let req = await API.makeRequest('post', `/api/payouts/setup`, {
         code: code,
       });
 
       if (req && req.status === 'ok') {
-        return redirect('/dashboard/host');
+        return redirect('/dashboard');
       } else {
         logger.log('req', req);
       }
