@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import Layout from '../../components/layout';
+import PlatformLayout from '../../components/platformLayout';
 
 class Home extends React.Component {
   render() {
     return (
-      <Layout
+      <PlatformLayout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
         title="Welcome"
@@ -133,7 +133,7 @@ class Home extends React.Component {
             }
           }
         `}</style>
-      </Layout>
+      </PlatformLayout>
     );
   }
 }
