@@ -7,7 +7,6 @@ module.exports = {
   trailingComma: 'all',
   bracketSpacing: false,
   arrowParens: 'always',
-  parser: 'babylon',
   overrides: [
     {
       files: 'frontend/sail/**/*.css',
