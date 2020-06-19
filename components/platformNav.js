@@ -20,25 +20,28 @@ class PlatformNav extends React.Component {
             <li className="navitem d-flex">
               <Link href="/">
                 <a className="navbar-brand">
-                  <img className="logo" src="/static/logo.svg" />
+                  <div className="brand">
+                    Mission <br /> Coffee <br />
+                    Co.
+                  </div>
                 </a>
               </Link>
             </li>
           </ul>
 
           <ul className="navbar-nav flex-row">
-          <li className="navitem d-flex">
-            <Link href="/wholesale">
-              <a className="btn">Wholesale</a>
-            </Link>
-          </li>
+            <li className="navitem d-flex">
+              <Link href="/wholesale">
+                <a className="btn">Wholesale</a>
+              </Link>
+            </li>
 
-          <li className="nav-item">
-            <Link href="/about">
-              <a className="btn">About</a>
-            </Link>
-          </li>
-        </ul>
+            <li className="nav-item">
+              <Link href="/about">
+                <a className="btn">About</a>
+              </Link>
+            </li>
+          </ul>
 
           <style jsx>{`
             :global(.nav-fullwidth) {
@@ -58,6 +61,19 @@ class PlatformNav extends React.Component {
 
             .logo {
               align-self: center;
+            }
+
+            .brand {
+              background: #7cbfbb;
+              width: 60px;
+              height: 60px;
+              padding: 5px;
+
+              word-wrap: break-word;
+              color: #fff;
+              font-size: 12px;
+              line-height: 16px;
+              font-weight: bold;
             }
           `}</style>
         </nav>

@@ -9,16 +9,13 @@ const PlatformLayout = (props) => (
     <Head title={props.title || 'Home'} />
     <NProgress />
 
-    <PlatformNav
-      width={props.width}
-    />
+    <div className={'app-platform container-fluid'}>
+      {props.hideNavigation && props.hideNavigation === true ? (
+        ''
+      ) : (
+        <PlatformNav />
+      )}
 
-    <div
-      className={
-        'app ' +
-        (props.width && props.width == 'full' ? 'container-fluid' : 'container')
-      }
-    >
       {props.children}
     </div>
 
@@ -31,6 +28,7 @@ const PlatformLayout = (props) => (
         font-size: 16px;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        background: #F2F6F5;
       }
 
       :global(html) {
@@ -41,68 +39,29 @@ const PlatformLayout = (props) => (
         height: 100%;
       }
 
-      :global(.splash-image) {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        object-fit: cover;
-        vertical-align: bottom;
-        display: flex;
-        align-items: center;
-
-        background: linear-gradient(
-            0deg,
-            rgba(255, 255, 255, 0) 50%,
-            #ffffff 100%
-          ),
-          url(https://images.unsplash.com/photo-1542349301445-c5f6ec562729?ixlib=rb-1.2.1&auto=format&fit=crop&w=2315&q=80)
-            no-repeat; // Source: https://unsplash.com/photos/wh-7GeXxItI
-        background-size: cover;
-        background-position: center center;
-      }
-
       :global(#__next) {
         height: 100%;
         overflow: auto;
       }
 
-      :global(.btn-primary) {
-        background: #0055ff;
-      }
-
-      :global(.btn-secondary) {
-        background: #fff;
-        border: 2px solid #0055ff;
-        color: #0055ff;
-      }
-
-      :global(.btn-secondary:hover) {
-        background: #0055ff;
-        border: 2px solid #0055ff;
-        color: #fff;
-      }
-
-      :global(.btn-half) {
-        display: inline;
-        width: 48%;
-        margin-right: 16px;
-        box-sizing: border-box;
-      }
-
-      :global(.btn-half:last-child) {
-        margin-right: 0px;
-      }
-
       :global(.btn) {
+        line-height: 100%;
         font-weight: 600;
-        height: 50px;
-        border-radius: 8px !important;
-        padding: 11px;
+        border-radius: 4px !important;
+        padding: 10px 20px;
+
+        border: 0;
+        color: #000;
       }
 
-      :global(.btn-full) {
-        width: 100%;
-      }
+      :global(.btn-primary) {
+        background: #7CBFBB;
+        color: #fff;
+      }      
+
+      :global(.btn-primary:hover) {
+        background: #63707E;
+      }        
 
       :global(button) {
         background-color: #0055ff;
@@ -120,17 +79,8 @@ const PlatformLayout = (props) => (
         cursor: pointer;
       }
 
-      :global(.popover) {
-        padding: 40px;
-        position: relative;
-        top: -50px;
-        width: 500px;
-        max-width: 500px;
-        background: #ffffff;
-        border: 0;
-        box-shadow: 0 15px 35px 0 rgba(50, 50, 93, 0.1),
-          0 5px 15px 0 rgba(0, 0, 0, 0.07);
-        border-radius: 8px;
+      :global(.full-height) {
+        height: 100%;
       }
 
       :global(h1) {
@@ -141,95 +91,12 @@ const PlatformLayout = (props) => (
         margin-bottom: 8px;
       }
 
-      :global(.supporting-text) {
-        font-size: 16px;
-        margin-bottom: 24px;
-      }
-      :global(input) {
-        border: 1px solid rgb(229, 229, 229);
-        border-radius: 8px;
-        margin-right: 16px;
-        display: block;
-        margin-bottom: 16px;
-        width: 100%;
-        padding: 12px 12px 12px 48px;
-        font-size: 16px;
-      }
-
-      :global(input:focus, select:focus) {
-        outline: none;
-        box-shadow: 0px 0px 5px rgba(0, 103, 244, 1);
-      }
-
-      :global(select) {
-        border: 1px solid rgb(229, 229, 229);
-        border-radius: 8px;
-        margin-right: 16px;
-        display: block;
-        margin-bottom: 16px;
-        width: 100%;
-        padding: 12px 48px;
-        appearance: none;
-        font-size: 16px;
-        color: #757575;
-      }
-
-      :global(.right) {
-        margin-right: 0px;
-      }
-
-      :global(.ReactModal__Overlay) {
-        opacity: 0;
-        transition: opacity 200ms ease;
-      }
-
-      :global(.ReactModal__Overlay--after-open) {
-        opacity: 1;
-      }
-
-      :global(.ReactModal__Overlay--before-close) {
-        opacity: 0;
-      }
-
-      :global(.ReactModal__Content) {
-        opacity: 0;
-        transform: translate(0, 16px) scale(0.98);
-        transition: opacity 200ms ease, transform 200ms ease;
-      }
-
-      :global(.ReactModal__Content--after-open) {
-        opacity: 1;
-        transform: translate(0, 0) scale(1);
-      }
-
-      :global(.ReactModal__Content--before-close) {
-        opacity: 0;
-        transform: translate(0, 16px) scale(0.98);
-      }
-
-      .app {
+      .app-platform {
         overflow: hidden;
-        min-height: calc(100% - 125px);
-        padding-bottom: 20px;
+        height: 100%;
       }
 
-      .api-warning {
-        margin-left: auto;
-        margin-right: auto;
-        z-index: 10;
-        padding: 5px 10px;
-        min-height: 30px;
-
-        background: #ffe946;
-        text-align: center;
-        font-size: 12px;
-        box-shadow: 0 15px 35px 0 rgba(50, 50, 93, 0.1),
-          0 5px 15px 0 rgba(0, 0, 0, 0.07);
-      }
-
-      .api-warning p {
-        margin: 0;
-      }
+      .
     `}</style>
   </>
 );

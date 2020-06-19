@@ -1,27 +1,31 @@
 import React from 'react';
 import Link from 'next/link';
 import PlatformLayout from '../../components/platformLayout';
+import PlatformNav from '../../components/platformNav';
 
-class Home extends React.Component {
+export default class PlatformHome extends React.Component {
   render() {
     return (
       <PlatformLayout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
         title="Welcome"
+        hideNavigation={true}
       >
-        <div className="home">
-          <div className="splash-image">
-            <div className="container">
-              <div className="popover">
-                <h1>WELCOME TO PLATFOMR</h1>
+        <div className="platform-home">
+          <div className="row full-height">
+            <div className="col-6 no-spacer">
+              <div className="platform-image"></div>
+            </div>
 
-                Roastery gives you your own platform that enables you manage your inventory, your roasting schedules and gives you a wholesale marketplace for easy online commerce.
-                
-                
-                <div className="button-container">
-                  <Link href="/signup">
-                    <a className="btn btn-primary">Create platform</a>
+            <div className="col-6 no-spacer">
+              <PlatformNav />
+
+              <div className="text-wrap">
+                <div className="text">
+                  <h1>Coffee roasted by hand.️</h1>
+                  <Link href="/products">
+                    <a className="btn btn-primary">Shop now</a>
                   </Link>
                 </div>
               </div>
@@ -29,51 +33,44 @@ class Home extends React.Component {
           </div>
         </div>
         <style jsx>{`
-          .home {
-            width: 100%;
-            position: absolute;
-            top: 160px;
-            left: 0;
-            right: 0;
-            bottom: 0;
-          }
-
-          h1 {
-            font-size: 27px;
-            font-weight: 600;
-            color: #202020;
-            width: 70%;
-            margin-bottom: 30px;
-          }
-
-          .splash-image {
+          .platform-home {
             width: 100%;
             height: 100%;
-            position: relative;
-            object-fit: cover;
-            vertical-align: bottom;
+          }
 
-            background: linear-gradient(
-                0deg,
-                rgba(255, 255, 255, 0) 50%,
-                #ffffff 100%
-              ),
-              url(https://images.unsplash.com/photo-1551815148-69d8d68fe41f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)
-                no-repeat;
+          .platform-image {
+            height: 100%;
+            width: 100%;
+
+            background: url(/static/platform_splash.png) no-repeat;
             background-size: cover;
             background-position: center center;
           }
 
-          .popover {
-            padding: 20px;
-            position: relative;
-            width: 100%;
+          h1 {
+            font-size: 70px;
+            font-weight: 600;
+            color: #202020;
+            width: 70%;
+            padding: 0;
+            margin: 0 0 30px 0;
+          }
 
-            background: #ffffff;
-            border: 0;
-            box-shadow: 0 15px 35px 0 rgba(50, 50, 93, 0.1),
-              0 5px 15px 0 rgba(0, 0, 0, 0.07);
-            border-radius: 6px;
+          .text-wrap {
+            display: flex;
+            align-content: center;
+            align-items: center;
+            height: 100%;
+            margin-top: -100px;
+          }
+
+          .text {
+            max-width: 500px;
+            margin: 0 auto;
+          }
+
+          .no-spacer {
+            padding: 0;
           }
 
           @media (min-width: 768px) {
@@ -83,59 +80,8 @@ class Home extends React.Component {
               max-width: 500px;
             }
           }
-          .booking-form {
-            width: 100%;
-            margin: 20px 0;
-          }
-
-          .button-container {
-            display: flex;
-            justify-content: flex-end;
-          }
-
-          .annotation {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 20px;
-            min-height: 50px;
-
-            background: #fff;
-            text-align: center;
-            font-size: 12px;
-          }
-
-          .annotation img,
-          .annotation a,
-          .annotation p {
-            display: inline-block;
-            margin: 0;
-          }
-
-          .annotation img {
-            margin-right: 10px;
-          }
-
-          .annotation a:link,
-          .annotation a:visited {
-            color: #32325d;
-          }
-
-          @media (min-width: 768px) {
-            .annotation {
-              max-width: 700px;
-              margin-left: auto;
-              margin-right: auto;
-              bottom: 30px;
-              border-radius: 50px;
-              padding: 10px;
-            }
-          }
         `}</style>
       </PlatformLayout>
     );
   }
 }
-
-export default Home;
