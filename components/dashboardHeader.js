@@ -72,6 +72,7 @@ class DashboardHeader extends Component {
           <div className="col-4">
             <div className="settings">
             <nav>
+              <a href={ "/p/" + platform.slug} target="_blank">Visit public site</a> <br />
               <a href="https://dashboard.stripe.com/test/payments" target="_blank">Recent orders</a> <br />
               <Link href="/dashboard/settings"><a>Platform settings</a></Link>
             </nav>

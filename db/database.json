@@ -7,7 +7,7 @@
       "lastName": "Warren",
       "email": "shop@missioncoffee.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "/static/user.jpg"
+      "avatar": "/static/profile.png"
     }
   ],
   "platforms": [
@@ -21,7 +21,7 @@
       "zip": "98104",
       "phone": "414-208-2194",
       "email": "shop@missioncoffee.com",
-      "slug": "coffee-shop",
+      "slug": "mission-coffee",
       "description": "Founded in 2020, Mission Coffee Co is a B corp with several competition awards in the bag, including gold in both the World Barista Championship and World Cup Tasting championships.",
       "stripe": {
         "stripeUserId": "acct_1GvbA9H7EIc3xp2a"
