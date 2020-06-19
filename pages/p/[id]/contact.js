@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import PlatformLayout from '../../components/platformLayout';
-import PlatformNav from '../../components/platformNav';
+import PlatformLayout from '../../../components/platformLayout';
+import PlatformNav from '../../../components/platformNav';
 
 export default class PlatformHome extends React.Component {
   render() {
@@ -23,10 +23,7 @@ export default class PlatformHome extends React.Component {
 
               <div className="text-wrap">
                 <div className="text">
-                  <h1>Coffee roasted by hand.️</h1>
-                  <Link href="/products">
-                    <a className="btn btn-primary">Shop now</a>
-                  </Link>
+                  <h1>Contact.️</h1>
                 </div>
               </div>
             </div>

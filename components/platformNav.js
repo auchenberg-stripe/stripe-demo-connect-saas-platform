@@ -31,14 +31,14 @@ class PlatformNav extends React.Component {
 
           <ul className="navbar-nav flex-row">
             <li className="navitem d-flex">
-              <Link href="/wholesale">
+              <Link href="/products">
                 <a className="btn">Wholesale</a>
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link href="/about">
-                <a className="btn">About</a>
+              <Link href="/contact">
+                <a className="btn">Contact</a>
               </Link>
             </li>
           </ul>

@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import Layout from '../components/layout';
-import HomeSearchForm from '../components/bookingSearchForm';
 
 class Home extends React.Component {
   render() {
@@ -13,14 +12,13 @@ class Home extends React.Component {
         isSplashPage="true"
       >
         <div className="home">
-            <div className="container">
-              <div className="text">
-                <h1>Manage your coffee roastery with ease.</h1>                
-                <Link href="/signup">
-                  <a className="btn btn-primary">Get started</a>
-                </Link>
-
-              </div>
+          <div className="container">
+            <div className="text">
+              <h1>Manage your coffee roastery with ease.</h1>
+              <Link href="/signup">
+                <a className="btn btn-primary">Get started</a>
+              </Link>
+            </div>
           </div>
 
           <div className="annotation">
@@ -109,8 +107,7 @@ class Home extends React.Component {
 
             h1 {
               font-size: 60px;
-            }          
-
+            }
           }
         `}</style>
       </Layout>

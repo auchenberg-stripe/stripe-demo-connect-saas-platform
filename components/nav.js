@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 import NavProfile from './navProfile';
-import BookingSearchForm from './bookingSearchForm';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -10,18 +9,18 @@ class Nav extends React.Component {
 
   render() {
     let className =
-      'navigation ' + (this.props.width && this.props.width == 'full'
+      'navigation ' +
+      (this.props.width && this.props.width == 'full'
         ? 'container-fluid nav-fullwidth'
         : 'container');
 
-        let logoSrc ='/static/logo.svg';
+    let logoSrc = '/static/logo.svg';
 
-        if(this.props.isDashboard) {
-          logoSrc ='/static/logo_dark.svg';
-        }
+    if (this.props.isDashboard) {
+      logoSrc = '/static/logo_dark.svg';
+    }
 
     return (
-
       <div className={className}>
         <nav className="navbar navbar-fixed navbar-expand-lg navbar-light">
           <ul className="navbar-nav mr-auto">
