@@ -9,10 +9,9 @@ class Signup extends React.Component {
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
         title="Signup"
+        isSplashPage="true"
       >
-        <div className="page-signup">
-          <div className="splash-image">
-            <div className="container">
+        <div className="page-signup center-center">
               <div className="box popover">
                 <h1>Create an platform</h1>
                 <p className="supporting-text">
@@ -21,17 +20,10 @@ class Signup extends React.Component {
                 </p>
                 <SignupForm />
               </div>
-            </div>
-          </div>
         </div>
         <style jsx>{`
           .page-signup {
-            width: 100%;
-            position: absolute;
-            top: 110px;
-            left: 0;
-            right: 0;
-            bottom: 0;
+
           }
         `}</style>
       </Layout>

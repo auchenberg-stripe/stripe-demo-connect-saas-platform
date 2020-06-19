@@ -10,10 +10,7 @@ class DashboardPlatformSettings extends Component {
     super(props);
 
     this.state = {
-      platformId: props.platform.platformId,
-      name: props.platform.name,
-      description: props.platform.description,
-      slug: props.platform.slug,
+      ... props.platform
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -66,6 +63,59 @@ class DashboardPlatformSettings extends Component {
                 type="text"
                 disabled
                 value={'http://roastey.com/p/' + this.state.slug}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="title">Address</label>
+              <input
+                className="form-control"
+                type="text"
+                id="address"
+                name="address"
+                placeholder=""
+                value={this.state.address}
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="title">City</label>
+              <input
+                className="form-control"
+                type="text"
+                id="city"
+                name="city"
+                placeholder=""
+                value={this.state.city}
+                onChange={this.handleChange}
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="title">Zip</label>
+              <input
+                className="form-control"
+                type="text"
+                id="zip"
+                name="zip"
+                placeholder=""
+                value={this.state.zip}
+                onChange={this.handleChange}
+              />
+            </div>
+
+
+            <div className="form-group">
+              <label htmlFor="title">State</label>
+              <input
+                className="form-control"
+                type="text"
+                id="state"
+                name="state"
+                placeholder=""
+                value={this.state.state}
+                onChange={this.handleChange}
               />
             </div>
 

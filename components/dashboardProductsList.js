@@ -13,57 +13,38 @@ function DashboardProductsList(props) {
     listItems = list.map((item) => (
       <li className="item" key={item.id}>
         {item.name && (
-            <a>
-              <h4>{item.name}</h4>
+            <>
               {<img src={item.images} />}
-            </a>
+              <h4>{item.name}</h4>
+              <a target="_blank" href={'https://dashboard.stripe.com/test/products/' + item.id}>Edit</a>
+            </>
         )}
         <style jsx>{`
           .item {
-            height: 325px;
+            height: 300px;
             position: relative;
 
             border: 0;
-            background: #f6f6f6;
             border-radius: 4px;
+            text-align: center;
+
           }
-
-          .item h3 {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            z-index: 2;
-
-            margin: 0;
-            padding: 0;
-
-            color: #fff;
-            font-size: 16px;
-            max-width: 50%;
-          }
-
           .item h4 {
-            position: absolute;
-            bottom: 60px;
-            left: 20px;
-            z-index: 2;
-
             margin: 0;
             padding: 0;
+            font-size: 14px;
+          }
 
-            color: #fff;
-            font-size: 12px;
-            max-width: 50%;
+          .item a {
+            font-size: 14px;
           }
 
           .item img {
             width: 100%;
-            height: 100%;
+            height: 240px;
             object-fit: cover;
             object-position: bottom;
-            border: 0;
-            filter: brightness(0.6);
-            border-radius: 6px;
+            margin-bottom: 20px;
           }
         `}</style>
       </li>
@@ -78,7 +59,7 @@ function DashboardProductsList(props) {
         .products-list {
           list-style: none;
           padding: 0;
-          margin: 0;
+          margin: 10px 0 0 0;
 
           display: grid;
           grid-template-columns: repeat(1, 1fr);

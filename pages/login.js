@@ -9,25 +9,19 @@ class Login extends React.Component {
       <Layout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
+        isSplashPage="true"
       >
-        <div className="login-page">
-          <div className="splash-image">
+        <div className="login-page center-center">
             <div className="container">
               <div className="box popover">
                 <h1>Sign in</h1>
                 <LoginComponent />
               </div>
-            </div>
           </div>
         </div>
         <style jsx>{`
           .login-page {
-            width: 100%;
-            position: absolute;
-            top: 110px;
-            left: 0;
-            right: 0;
-            bottom: 0;
+
           }
         `}</style>
       </Layout>

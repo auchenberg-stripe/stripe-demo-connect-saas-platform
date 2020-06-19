@@ -36,7 +36,7 @@ class NavProfile extends React.Component {
             aria-labelledby="navbarDropdown"
           >
             <Link href="/dashboard">
-              <a className="dropdown-item">Platform dashboard</a>
+              <a className="dropdown-item">Dashboard</a>
             </Link>
             <Link href="/profile">
               <a className="dropdown-item">Your Profile</a>
@@ -52,7 +52,7 @@ class NavProfile extends React.Component {
         <>
           <li className="navitem d-flex">
             <Link href="/signup">
-              <a className="btn">Create platform</a>
+              <a className="btn">Create account</a>
             </Link>
           </li>
 

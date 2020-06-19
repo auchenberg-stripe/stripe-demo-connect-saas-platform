@@ -31,7 +31,7 @@ class Login extends Component {
 
   loginAsDemo() {
     this.setState({
-      email: 'hello@collectivecoffee.com',
+      email: 'shop@missioncoffee.com',
       password: 'test',
     });
   }
@@ -77,10 +77,10 @@ class Login extends Component {
           </p>
           <form onSubmit={this.handleSubmit}>
             <button
-              className="btn btn-secondary btn-half"
+              className="btn btn-secondary btn-full"
               onClick={this.loginAsDemo}
             >
-              CollectiveCoffee demo
+              Login as Mission Coffee Co
             </button>
 
             <input

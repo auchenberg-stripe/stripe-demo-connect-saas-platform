@@ -13,7 +13,7 @@ class DashboardHeader extends Component {
   }
 
   render() {
-    let { profile } = this.props;
+    let { profile, platform } = this.props;
     let avatarUrl = profile ? profile.avatar : "/static/avatar.png";
 
     let formattedBalance = "";
@@ -30,8 +30,9 @@ class DashboardHeader extends Component {
 
     return (
       <div className="dashboard-header">
+        <div className="bg-overlay"></div>
         <div className="row">
-          <div className="col-4">
+          <div className="col-12">
             {profile && (
               <div className="media user-details">
                 <img src={avatarUrl} className="mr-3 avatar" />
@@ -46,82 +47,58 @@ class DashboardHeader extends Component {
               </div>
             )}
           </div>
-          <div className="col-4">
-            <div className="align-middle stripe-dashboard">
-              {formattedBalance && (
-                <>
-                  <p className="label text-secondary">
-                    Balance{" "}
-                    <a href="#" onClick={this.handleDashboardLink}>
-                      See Payouts ↗
-                    </a>
+        </div>
+        <div className="row">
+          <div className="col-3">        
+            <div className="platform-details">
+                <div className="row-one">
+                  <strong>{platform.name}</strong>
+                  <p className="text-secondary">
+                    {platform.address} <br />
+                    {platform.city}  {platform.state} {platform.zip}
                   </p>
-                  <p className="balance">{formattedBalance} </p>
-                </>
-              )}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="row">
-          <div className="col-12">
-            <ul className="nav nav-tabs">
-              <li className="nav-item">
-                <Link href="/dashboard">
-                  <a
-                    className={
-                      "nav-link " +
-                      (this.props.dashboardType == "dashboard" ? "active" : "")
-                    }
-                  >
-                    Dashboard
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/dashboard">
-                  <a
-                    className={
-                      "nav-link " +
-                      (this.props.dashboardType == "orders" ? "active" : "")
-                    }
-                  >
-                    Orders
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/dashboard/products">
-                  <a
-                    className={
-                      "nav-link " +
-                      (this.props.dashboardType == "products" ? "active" : "")
-                    }
-                  >
-                    Products
-                  </a>
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/dashboard/settings">
-                  <a
-                    className={
-                      "nav-link " +
-                      (this.props.dashboardType == "settings" ? "active" : "")
-                    }
-                  >
-                    Settings
-                  </a>
-                </Link>
-              </li>
-            </ul>
+          <div className="col-5">                      
+            <div className="platform-details">
+              <p><strong>TEL:</strong>  {platform.phone}</p>
+              <p><strong>Email:</strong>  {platform.email}</p>
+              <p><strong>M-F:</strong>  10AM-8PM</p>
+            </div>
+          </div>
+           
+          <div className="col-4">
+            <div className="settings">
+            <nav>
+              <a href="https://dashboard.stripe.com/test/payments" target="_blank">Recent orders</a> <br />
+              <Link href="/dashboard/settings"><a>Platform settings</a></Link>
+            </nav>
+            </div>
           </div>
         </div>
 
         <style jsx>{`
           .dashboard-header {
-            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 24px;
+            margin-bottom: 80px;
             padding-bottom: 0px;
+            position: relative;
+          }
+
+          .bg-overlay {
+            background: #F2F1E7;
+
+            position: absolute;
+            z-index: -1;
+            height: 320px;
+            top: -120px;
+            left: -100%;
+            right: -100%;
+          }
+
           }
           .nav-tabs {
             margin: 20px 0;
@@ -136,6 +113,7 @@ class DashboardHeader extends Component {
             padding: 0 8px 8px;
             margin-right: 24px;
             color: #484848;
+            border-radius: 0;
           }
 
           .nav-link:hover {
@@ -144,67 +122,54 @@ class DashboardHeader extends Component {
 
           .nav-link.active {
             border: #fff;
-            border-bottom: 2px solid #007bff;
+            border-bottom: 1px solid #fff;
             padding-top: 1px;
             color: #0055ff;
           }
+          
+          .user-details {
+            font-size: 14px;
+            padding-bottom: 40px;
+          }
+
           .user-details .avatar {
             height: 60px;
             width: 60px;
-            border-radius: 60px;
+            border-radius: 0;
             object-fit: cover;
             align-self: center;
-          }
-
-          .user-details {
-            font-size: 14px;
-            padding-bottom: 12px;
-          }
+          }          
 
           .user-details-body {
             padding-top: 10px;
           }
 
           .user-details h5 {
-            font-size: 24px;
+            font-size: 100%;
             margin: 0;
-            font-weight: 600;
+            font-weight: bold;
           }
 
           .user-details p {
-            font-size: 14px;
             margin: 0;
-            transform: translateY(-4px);
-            margin-top: 4px;
           }
 
-          .stripe-dashboard {
-            font-size: 12px;
-            padding-top: 4px;
-          }
-
-          .stripe-dashboard .label {
-            font-size: 14px;
+          .platform-details p {
             margin: 0;
-            padding: 0;
           }
 
-          .stripe-dashboard .balance {
-            margin: 0;
-            padding: 0;
-            font-size: 22px;
-            line-height: 1;
-            font-weight: 600;
+          .settings {
+            height: 100%;
+            display: flex;
+            flex-direction: column; 
+            text-align: right;
           }
 
-          .stripe-dashboard a {
-            font-weight: 500;
-            padding-left: 6px;
+          .settings nav {
+            margin-top: auto;
+            align-self: flex-end;
           }
 
-          .stripe-dashboard a:hover {
-            text-decoration: none;
-          }
         `}</style>
       </div>
     );

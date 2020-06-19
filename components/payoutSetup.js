@@ -2,7 +2,7 @@ import { Component } from "react";
 import API from "../helpers/api";
 import logger from "../helpers/logger";
 
-class PayoutSetup extends Component {
+class StripeSetup extends Component {
   constructor(props) {
     super(props);
 
@@ -27,38 +27,51 @@ class PayoutSetup extends Component {
 
     return (
       <>
-        <div className="text-center box">
-          <img src="/static/icon-bank.svg" className="icon" />
-          <h3>To continue you need to setup payments on Roastery</h3>
+        <div className="stripe-setup">
+          <h3>Connect your Stripe account</h3>
           <p>
-            Roastery partners with Stripe for payments and payouts
+           We are using Stripe to for payments and payouts.
           </p>
 
+
+          <div className="stripe-box">
+            <img src="/static/stripe_blue.svg" />
+          </div>
+
           <a
-            className="btn btn-primary text-center"
+            className="btn btn-primary text-center btn-full"
             onClick={this.handleConnect}
             href="#"
           >
-            Connect your Stripe account
+            Connect Stripe
           </a>
 
           <p className="text-center notice">
-            You'll be redirected to Stripe to complete the onboarding proces.
+            You'll be redirected to Stripe for onboarding
           </p>
         </div>
         <style jsx>{`
-          .icon {
-            margin-bottom: 30px;
-            height: 32px;
+
+          .stripe-setup {
+
           }
 
-          .box {
-            max-width: 300px;
-            max-height: 400px;
+          .stripe-box {
+            height: 300px;
+            width: 300px;
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+          }
+
+          .stripe-box img {
+            margin: 0 auto;
           }
 
           h3 {
-            font-weight: 600;
+            font-weight: bold;
+            font-size: 100%;
           }
 
           p {
@@ -71,7 +84,8 @@ class PayoutSetup extends Component {
             margin-top: 16px;
           }
 
-          .box .notice {
+          .notice {
+            padding-top: 10px;
             font-size: 12px;
             line-height: 1.5;
           }
@@ -85,4 +99,4 @@ class PayoutSetup extends Component {
   }
 }
 
-export default PayoutSetup;
+export default StripeSetup;

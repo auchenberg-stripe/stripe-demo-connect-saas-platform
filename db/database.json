@@ -3,22 +3,28 @@
     {
       "userId": "Igj-hMfQa",
       "platformId": "Igj-hMfQa123",
-      "firstName": "Hayden",
-      "lastName": "Larsen",
-      "email": "hello@collectivecoffee.com",
+      "firstName": "Wade",
+      "lastName": "Warren",
+      "email": "shop@missioncoffee.com",
       "password": "$2b$10$fDU/gKP8pL5LeozB3WBodu/zJodwplgqqAk2xkMYavFGHCcJ0/IEi",
-      "avatar": "//images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1268&q=80"
+      "avatar": "/static/user.jpg"
     }
   ],
   "platforms": [
     {
       "platformId": "Igj-hMfQa123",
       "ownerUserId": "Igj-hMfQa",
-      "name": "Collective Coffee",
-      "slug": "collective-coffee",
-      "description": "'Founded in 2007, the Collective Coffee is a B corp with several competition awards in the bag, including gold in both the World Barista Championship and World Cup Tasting championships.'",
+      "name": "Mission Coffee Co.",
+      "address": "1880 Mission St",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "98104",
+      "phone": "414-208-2194",
+      "email": "shop@missioncoffee.com",
+      "slug": "coffee-shop",
+      "description": "Founded in 2020, Mission Coffee Co is a B corp with several competition awards in the bag, including gold in both the World Barista Championship and World Cup Tasting championships.",
       "stripe": {
-        "stripeUserId": "acct_1FFQIsELyXxylgqV"
+        "stripeUserId": "acct_1GvbA9H7EIc3xp2a"
       }
     }
   ],
