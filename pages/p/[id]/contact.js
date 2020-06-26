@@ -2,14 +2,27 @@ import React from 'react';
 import Link from 'next/link';
 import PlatformLayout from '../../../components/platformLayout';
 import PlatformNav from '../../../components/platformNav';
+import API from '../../../helpers/api';
 
-export default class PlatformHome extends React.Component {
+export default class PlatformContact extends React.Component {
+  static async getInitialProps(context) {
+    let platform = await API.makeRequest(
+      'get',
+      '/api/platforms/slug/mission-coffee',
+    );
+
+    return {
+      platform: platform,
+    };
+  }
+
   render() {
     return (
       <PlatformLayout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
-        title="Welcome"
+        title={'Contact - ' + this.props.platform.name}
+        platform={this.props.platform}
         hideNavigation={true}
       >
         <div className="platform-home">
@@ -19,7 +32,7 @@ export default class PlatformHome extends React.Component {
             </div>
 
             <div className="col-6 no-spacer">
-              <PlatformNav />
+              <PlatformNav platform={this.props.platform} />
 
               <div className="text-wrap">
                 <div className="text">

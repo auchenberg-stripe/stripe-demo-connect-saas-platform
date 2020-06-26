@@ -18,7 +18,7 @@ class PlatformNav extends React.Component {
         <nav className="navbar navbar-fixed navbar-expand-lg navbar-light">
           <ul className="navbar-nav mr-auto">
             <li className="navitem d-flex">
-              <Link href="/">
+              <Link href={'/p/' + this.props.platform.slug}>
                 <a className="navbar-brand">
                   <div className="brand">
                     Mission <br /> Coffee <br />
@@ -31,13 +31,13 @@ class PlatformNav extends React.Component {
 
           <ul className="navbar-nav flex-row">
             <li className="navitem d-flex">
-              <Link href="/products">
+              <Link href={'/p/' + this.props.platform.slug + '/products'}>
                 <a className="btn">Wholesale</a>
               </Link>
             </li>
 
             <li className="nav-item">
-              <Link href="/contact">
+              <Link href={'/p/' + this.props.platform.slug + '/contact'}>
                 <a className="btn">Contact</a>
               </Link>
             </li>

@@ -2,14 +2,26 @@ import React from 'react';
 import Link from 'next/link';
 import PlatformLayout from '../../../components/platformLayout';
 import PlatformNav from '../../../components/platformNav';
+import API from '../../../helpers/api';
 
 export default class PlatformHome extends React.Component {
+  static async getInitialProps(context) {
+    let platform = await API.makeRequest(
+      'get',
+      '/api/platforms/slug/mission-coffee',
+    );
+
+    return {
+      platform: platform,
+    };
+  }
+
   render() {
     return (
       <PlatformLayout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
-        title="Welcome"
+        title={this.props.platform.name}
         hideNavigation={true}
       >
         <div className="platform-home">
@@ -19,12 +31,12 @@ export default class PlatformHome extends React.Component {
             </div>
 
             <div className="col-6 no-spacer">
-              <PlatformNav />
+              <PlatformNav platform={this.props.platform} />
 
               <div className="text-wrap">
                 <div className="text">
                   <h1>Coffee roasted by hand.️</h1>
-                  <Link href="/products">
+                  <Link href={'/p/' + this.props.platform.slug + '/products'}>
                     <a className="btn btn-primary">Shop now</a>
                   </Link>
                 </div>

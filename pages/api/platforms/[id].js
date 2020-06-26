@@ -7,19 +7,19 @@ export default requireAuthEndpoint(async (req, res) => {
 
   console.log('req.method', req.method);
 
-  if(req.method !== 'PUT') {
+  if (req.method !== 'PUT') {
     return res.status(400).json();
   }
 
   console.log('req.body', req.body);
 
   try {
-      let list = storage
+    let list = storage
       .get('platforms')
       .find({platformId: id, ownerUserId: authenticatedUserId})
-      .assign({ ... req.body})
-      .write()
-            
+      .assign({...req.body})
+      .write();
+
     //   .assign(req.body)
     //   .write();
 

@@ -13,13 +13,13 @@ class Dashboard extends React.Component {
   }
 
   static async getInitialProps(context) {
-    let userProfile = await API.makeRequest('get', '/api/profile');
-    let userPlatform = await API.makeRequest('get', '/api/profile/platform');
+    let profile = await API.makeRequest('get', '/api/profile');
+    let platform = await API.makeRequest('get', '/api/profile/platform');
     let products = await API.makeRequest('get', '/api/products');
 
     return {
-      profile: userProfile,
-      platform: userPlatform,
+      profile: profile,
+      platform: platform,
       products: products,
       dashboardType: 'products',
     };
@@ -29,6 +29,10 @@ class Dashboard extends React.Component {
     // TODO: Move this to a server side check
     if (!this.props.isAuthenticated) {
       redirect('/login');
+    }
+
+    if (this.props.platform && !this.props.platform.stripe) {
+      redirect('/profile/payouts');
     }
   }
 

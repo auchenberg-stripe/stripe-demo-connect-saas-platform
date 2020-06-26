@@ -4,22 +4,29 @@ import PlatformNav from '../components/platformNav';
 import NProgress from '../components/nprogress';
 import getConfig from 'next/config';
 
-const PlatformLayout = (props) => (
-  <>
-    <Head title={props.title || 'Home'} />
-    <NProgress />
+class PlatformLayout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.props = props;
+  }
 
-    <div className={'app-platform container-fluid'}>
-      {props.hideNavigation && props.hideNavigation === true ? (
-        ''
-      ) : (
-        <PlatformNav />
-      )}
+  render() {
+    return (
+      <>
+        <Head title={this.props.title || 'Home'} />
+        <NProgress />
 
-      {props.children}
-    </div>
+        <div className={'app-platform container-fluid'}>
+          {this.props.hideNavigation && this.props.hideNavigation === true ? (
+            ''
+          ) : (
+            <PlatformNav platform={this.props.platform} />
+          )}
 
-    <style jsx>{`
+          {this.props.children}
+        </div>
+
+        <style jsx>{`
       :global(body) {
         font-family: -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue,
           sans-serif;
@@ -55,7 +62,7 @@ const PlatformLayout = (props) => (
       }
 
       :global(.btn-primary) {
-        background: #7CBFBB;
+        background: #7CBFBB;;
         color: #fff;
       }      
 
@@ -98,7 +105,9 @@ const PlatformLayout = (props) => (
 
       .
     `}</style>
-  </>
-);
+      </>
+    );
+  }
+}
 
 export default PlatformLayout;
