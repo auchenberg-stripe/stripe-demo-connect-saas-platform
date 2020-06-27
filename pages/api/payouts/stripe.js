@@ -1,4 +1,3 @@
-import getHost from '../../../utils/get-host';
 import storage from '../../../helpers/storage';
 const querystring = require('querystring');
 const env = require('dotenv').config({path: './.env'});
@@ -15,12 +14,9 @@ export default requireAuthEndpoint(async (req, res) => {
 
     let clientId = process.env.STRIPE_CLIENT_ID;
 
-    // Pass UserAccount info along to Stripe
     let userEmail = userAccount.email;
     let userFirstName = userAccount.firstName;
     let userLastName = userAccount.lastName;
-
-    const redirect_uri = getHost(req) + '/stripe/callback';
 
     let stripeConnectParams = {
       client_id: clientId,

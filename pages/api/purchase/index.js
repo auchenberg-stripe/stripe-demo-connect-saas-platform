@@ -1,5 +1,6 @@
 import storage from '../../../helpers/storage';
 import stripe from '../../../helpers/stripe';
+import getHost from '../../../utils/get-host';
 
 export default async (req, res) => {
   if (req.method != 'POST') {
@@ -37,6 +38,12 @@ export default async (req, res) => {
       priceId = price.id;
     }
 
+    const successUrl =
+      getHost(req) +
+      `/p/${platform.slug}/thank-you?sessionId={CHECKOUT_SESSION_ID}`;
+
+    const cancelUrl = getHost(req) + `/p/${platform.slug}/products`;
+
     const session = await stripe.checkout.sessions.create(
       {
         mode: 'payment',
@@ -54,8 +61,8 @@ export default async (req, res) => {
         payment_intent_data: {
           application_fee_amount: platformFee,
         },
-        success_url: `http://localhost:3000/p/${platform.slug}/thank-you?sessionId={CHECKOUT_SESSION_ID}`, // TODO: Handle prod URLS
-        cancel_url: `http://localhost:3000/p/${platform.slug}/products`,
+        success_url: successUrl,
+        cancel_url: cancelUrl,
       },
       {
         stripeAccount: stripeUserId,

@@ -1,7 +1,5 @@
 import fetch from 'isomorphic-unfetch';
 import storage from '../../../helpers/storage';
-import logger from '../../../helpers/logger';
-
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
 
 const env = require('dotenv').config({path: './.env'});
@@ -22,11 +20,7 @@ let makeStripeConnectRequest = async (code) => {
     method: 'POST',
     body: JSON.stringify(params),
     headers: {'Content-Type': 'application/json'},
-  })
-    .then((res) => res.json())
-    .catch((err) => {
-      logger.log('StripeSetup.makeStripeConnectRequest.error', err);
-    });
+  }).then((res) => res.json());
 };
 
 let updatePlatform = async (authenticatedUserId, stripeUserId) => {
@@ -56,7 +50,6 @@ export default requireAuthEndpoint(async (req, res) => {
     let stripeUserId = stripeConnectRequest.stripe_user_id;
 
     if (!stripeUserId) {
-      logger.log('StripeSetup.abort.no.stripeUserId');
       return res.status(400).json({msg: 'Connect request to Stripe failed'});
     }
 
@@ -64,7 +57,6 @@ export default requireAuthEndpoint(async (req, res) => {
 
     return res.status(200).json({status: 'ok'});
   } catch (err) {
-    logger.log('StripeSetup.error', err);
     return res.status(400).json(err);
   }
 });

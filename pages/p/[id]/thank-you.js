@@ -30,11 +30,10 @@ export default class PlatformThankYou extends React.Component {
         userProfile={this.props.userProfile}
         title={'Thank you - ' + this.props.platform.name}
         platform={this.props.platform}
-        hideNavigation={true}
       >
         <div className="platform-home">
           <div className="row full-height">
-            <div className="col-lg-6 no-spacer">
+            <div className="col-lg-6">
               <div className="text-wrap">
                 <div className="text">
                   <h3>
@@ -44,7 +43,7 @@ export default class PlatformThankYou extends React.Component {
               </div>
             </div>
 
-            <div className="col-lg-6 no-spacer order">
+            <div className="col-lg-6 order">
               <PlatformNav platform={this.props.platform} />
 
               <div className="text-wrap">
@@ -149,7 +148,7 @@ export default class PlatformThankYou extends React.Component {
           }
 
           .items {
-            width: max-400px;
+            max-width: 400px;
             padding-bottom: 40px;
           }
 
@@ -161,10 +160,8 @@ export default class PlatformThankYou extends React.Component {
           .order-details {
             max-width: 500px;
             margin: 0 auto;
-
             font-size: 14px;
-
-            margin-top: -100px;
+            margin-top: -150px;
           }
 
           .text {

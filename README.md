@@ -38,7 +38,7 @@ The app renders its React components as both the server and client-side using [i
 
 To run this sample locally all you need is checkout the repo and run the app.
 
-You will need a Stripe account with its own set of [API keys](https://stripe.com/docs/development#api-keys), and enable a few features for your Stripe Account. 
+You will need a Stripe account with its own set of [API keys](https://stripe.com/docs/development#api-keys), and enable a few features for your Stripe Account.
 
 Don't worry, just follow the steps in this guide.
 
@@ -56,7 +56,7 @@ Once you have registered your Connect platform, you can now generate a Connect U
 
 **2. Get Stripe API keys and configure environment variables**
 
-Go to the Stripe [developer dashboard](https://dashboard.stripe.com/apikeys) to find your API keys (developer settings), and your Connect User Id (Connect setttings). 
+Go to the Stripe [developer dashboard](https://dashboard.stripe.com/apikeys) to find your API keys (developer settings), and your Connect User Id (Connect setttings).
 
 Copy the .env.example file into a file named .env in the folder of the server you want to use. For example:
 

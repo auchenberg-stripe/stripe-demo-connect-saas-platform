@@ -19,10 +19,7 @@ export default async (req, res) => {
     avatar: gravatar.url(normalizedEmail, {s: '400'}),
   };
 
-  await storage
-    .get('users')
-    .push(userObject)
-    .write();
+  await storage.get('users').push(userObject).write();
 
   const token = generateToken({
     userId: userObject.userId,
