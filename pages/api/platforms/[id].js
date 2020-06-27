@@ -1,5 +1,6 @@
 import storage from '../../../helpers/storage';
 import requireAuthEndpoint from '../../../utils/requireAuthEndpoint';
+import slug from 'slug';
 
 export default requireAuthEndpoint(async (req, res) => {
   let authenticatedUserId = req.authToken.userId;
@@ -10,10 +11,13 @@ export default requireAuthEndpoint(async (req, res) => {
   }
 
   try {
+    let properties = {...req.body};
+    properties.slug = slug(properties.name);
+
     let list = storage
       .get('platforms')
       .find({platformId: id, ownerUserId: authenticatedUserId})
-      .assign({...req.body})
+      .assign(properties)
       .write();
 
     return res.status(200).json(list);
