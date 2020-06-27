@@ -44,7 +44,9 @@ export default class PlatformThankYou extends React.Component {
             </div>
 
             <div className="col-lg-6 order">
-              <PlatformNav platform={this.props.platform} />
+              <div className="nav-box">
+                <PlatformNav platform={this.props.platform} />
+              </div>
 
               <div className="text-wrap">
                 <div className="order-details">
@@ -136,6 +138,10 @@ export default class PlatformThankYou extends React.Component {
             color: #1a1f36;
           }
 
+          p {
+            margin-bottom: 40px;
+          }
+
           .text-wrap {
             display: flex;
             align-items: center;
@@ -145,6 +151,8 @@ export default class PlatformThankYou extends React.Component {
 
           .order {
             background: #fff;
+            position: relative;
+            padding-top: 100px;
           }
 
           .items {
@@ -161,12 +169,18 @@ export default class PlatformThankYou extends React.Component {
             max-width: 500px;
             margin: 0 auto;
             font-size: 14px;
-            margin-top: -150px;
           }
 
           .text {
             max-width: 500px;
             margin: 0 auto;
+          }
+
+          .nav-box {
+            position: absolute;
+            left: 15px;
+            right: 15px;
+            top: 0;
           }
         `}</style>
       </PlatformLayout>

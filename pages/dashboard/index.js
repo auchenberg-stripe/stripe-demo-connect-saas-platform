@@ -54,14 +54,14 @@ class Dashboard extends React.Component {
           <div className="row">
             <div className="col-12">
               <div className="row">
-                <div className="col-8">
+                <div className="col-6">
                   <div className="clearfix">
                     <h4>Your products</h4>
                   </div>
                 </div>
-                <div className="col-4">
+                <div className="col-6">
                   <NewButton
-                    label="Add new on Stripe"
+                    label="Add new"
                     link="https://dashboard.stripe.com/test/products"
                   />
                 </div>
@@ -71,6 +71,9 @@ class Dashboard extends React.Component {
           </div>
         </div>
         <style jsx>{`
+          .dashboard {
+            margin-bottom: 50px;
+          }
           .dashboard h4 {
             font-size: 100%;
             font-weight: bold;

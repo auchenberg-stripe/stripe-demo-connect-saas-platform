@@ -2,11 +2,7 @@ import Link from 'next/link';
 
 function DashboardProductsList(props) {
   const list = props.list ? [...props.list] : [];
-  if (list.length < 6) {
-    while (list.length < 6) {
-      list.push({id: Math.random()});
-    }
-  }
+
   let listItems = [];
 
   if (list) {

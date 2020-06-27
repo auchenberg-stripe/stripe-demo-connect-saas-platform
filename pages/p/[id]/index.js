@@ -6,9 +6,10 @@ import API from '../../../helpers/api';
 
 export default class PlatformHome extends React.Component {
   static async getInitialProps(context) {
+    let platformSlug = context.query.id;
     let platform = await API.makeRequest(
       'get',
-      '/api/platforms/slug/mission-coffee',
+      '/api/platforms/slug/' + platformSlug,
     );
 
     return {

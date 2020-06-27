@@ -15,7 +15,9 @@ export default class PlatformProductsList extends React.Component {
     });
   }
 
-  async buyProduct(product) {
+  async buyProduct(product, e) {
+    e.preventDefault();
+
     try {
       let purchase = await API.makeRequest('post', '/api/purchase', {
         platformId: this.props.platform.platformId,
@@ -56,6 +58,7 @@ export default class PlatformProductsList extends React.Component {
                 <h4>{item.name}</h4>
                 <p>{price}</p>
                 <a
+                  href="#"
                   target="_blank"
                   className="btn btn-primary"
                   onClick={this.buyProduct.bind(this, item)}
@@ -84,7 +87,7 @@ export default class PlatformProductsList extends React.Component {
               .item img {
                 width: 100%;
                 height: 240px;
-                object-fit: contain;
+                object-fit: cover;
                 object-position: center center;
                 margin-bottom: 20px;
               }

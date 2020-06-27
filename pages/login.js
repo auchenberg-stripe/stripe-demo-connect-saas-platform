@@ -1,9 +1,9 @@
 import React from 'react';
 import Layout from '../components/layout';
 
-import LoginComponent from '../components/login';
+import LoginComponent from '../components/loginForm';
 
-class Login extends React.Component {
+export default class LoginPage extends React.Component {
   render() {
     return (
       <Layout
@@ -12,21 +12,18 @@ class Login extends React.Component {
         isSplashPage="true"
       >
         <div className="login-page center-center">
-            <div className="container">
-              <div className="box popover">
-                <h1>Sign in</h1>
-                <LoginComponent />
-              </div>
+          <div className="container">
+            <div className="box popover">
+              <h1>Sign in</h1>
+              <LoginComponent />
+            </div>
           </div>
         </div>
         <style jsx>{`
           .login-page {
-
           }
         `}</style>
       </Layout>
     );
   }
 }
-
-export default Login;

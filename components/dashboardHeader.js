@@ -49,7 +49,7 @@ class DashboardHeader extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-3">
+          <div className="col-lg-3">
             <div className="platform-details">
               <div className="row-one">
                 <strong>{platform.name}</strong>
@@ -61,7 +61,7 @@ class DashboardHeader extends Component {
             </div>
           </div>
 
-          <div className="col-5">
+          <div className="col-lg-5">
             <div className="platform-details">
               <p>
                 <strong>TEL:</strong> {platform.phone}
@@ -75,7 +75,7 @@ class DashboardHeader extends Component {
             </div>
           </div>
 
-          <div className="col-4">
+          <div className="col-lg-4">
             <div className="settings">
               <nav>
                 <a href={'/p/' + platform.slug} target="_blank">
@@ -111,7 +111,7 @@ class DashboardHeader extends Component {
 
             position: absolute;
             z-index: -1;
-            height: 320px;
+            height: 500px;
             top: -120px;
             left: -100%;
             right: -100%;
@@ -172,6 +172,10 @@ class DashboardHeader extends Component {
             margin: 0;
           }
 
+          .platform-details {
+            padding-bottom: 20px;
+          }                 
+
           .platform-details p {
             margin: 0;
           }
@@ -185,8 +189,24 @@ class DashboardHeader extends Component {
 
           .settings nav {
             margin-top: auto;
-            align-self: flex-end;
+            align-self: flex-start;
+            text-align: left;
           }
+
+          @media (min-width: 992px) { 
+            .bg-overlay {
+              height: 320px;
+            }
+
+            .platform-details {
+              padding: 0;
+            }            
+
+            .settings nav {
+              align-self: flex-end;
+              text-align: right;
+            }
+          }              
 
         `}</style>
       </div>

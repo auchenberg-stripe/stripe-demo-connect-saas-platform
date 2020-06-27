@@ -4,7 +4,7 @@ import {Component} from 'react';
 import {handleLogin} from '../utils/auth';
 import logger from '../helpers/logger';
 
-class Login extends Component {
+export default class LoginForm extends Component {
   constructor(props) {
     super(props);
 
@@ -142,5 +142,3 @@ class Login extends Component {
     );
   }
 }
-
-export default Login;

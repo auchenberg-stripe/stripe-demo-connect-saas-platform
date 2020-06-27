@@ -40,7 +40,7 @@ class PlatformNav extends React.Component {
         </nav>
         <style jsx>{`
           .navigation {
-            padding: 10px 0;
+            margin: 10px 0;
           }
           .navbar {
             margin: 0;

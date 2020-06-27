@@ -8,15 +8,8 @@ class Nav extends React.Component {
   }
 
   render() {
-    let className =
-      'navigation ' +
-      (this.props.width && this.props.width == 'full'
-        ? 'container-fluid nav-fullwidth'
-        : 'container');
-
     let logoSrc = '/static/logo.svg';
-
-    let navClass = 'navbar navbar-fixed navbar-expand-lg ';
+    let navClass = 'navbar navbar-fixed navbar-expand-lg';
 
     if (this.props.isDashboard) {
       logoSrc = '/static/logo_dark.svg';
@@ -26,7 +19,7 @@ class Nav extends React.Component {
     }
 
     return (
-      <div className={className}>
+      <div className="navigation container">
         <nav className={navClass}>
           <ul className="navbar-nav mr-auto">
             <li className="navitem d-flex">
@@ -44,10 +37,6 @@ class Nav extends React.Component {
           />
 
           <style jsx>{`
-            :global(.nav-fullwidth) {
-              padding-left: 50px;
-            }
-
             .navbar {
               margin: 32px 0 32px 0;
               padding: 0;
