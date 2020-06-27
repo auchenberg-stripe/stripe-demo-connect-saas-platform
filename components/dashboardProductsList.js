@@ -13,11 +13,16 @@ function DashboardProductsList(props) {
     listItems = list.map((item) => (
       <li className="item" key={item.id}>
         {item.name && (
-            <>
-              {<img src={item.images} />}
-              <h4>{item.name}</h4>
-              <a target="_blank" href={'https://dashboard.stripe.com/test/products/' + item.id}>Edit</a>
-            </>
+          <>
+            {<img src={item.images} />}
+            <h4>{item.name}</h4>
+            <a
+              target="_blank"
+              href={'https://dashboard.stripe.com/test/products/' + item.id}
+            >
+              Edit
+            </a>
+          </>
         )}
         <style jsx>{`
           .item {
@@ -27,7 +32,6 @@ function DashboardProductsList(props) {
             border: 0;
             border-radius: 4px;
             text-align: center;
-
           }
           .item h4 {
             margin: 0;
@@ -64,7 +68,6 @@ function DashboardProductsList(props) {
           display: grid;
           grid-template-columns: repeat(1, 1fr);
           grid-gap: 30px;
-          grid-auto-rows: minmax(100px, auto);
         }
 
         @media (min-width: 768px) {

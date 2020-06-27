@@ -17,26 +17,38 @@ export default class PlatformContact extends React.Component {
   }
 
   render() {
+    let platform = this.props.platform;
     return (
       <PlatformLayout
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
-        title={'Contact - ' + this.props.platform.name}
-        platform={this.props.platform}
+        title={'Contact - ' + platform.name}
+        platform={platform}
         hideNavigation={true}
       >
         <div className="platform-home">
           <div className="row full-height">
-            <div className="col-6 no-spacer">
+            <div className="col-lg-6 no-spacer">
               <div className="platform-image"></div>
             </div>
 
-            <div className="col-6 no-spacer">
-              <PlatformNav platform={this.props.platform} />
+            <div className="col-lg-6">
+              <PlatformNav platform={platform} />
 
               <div className="text-wrap">
                 <div className="text">
-                  <h1>Contact.️</h1>
+                  <div className="platform-details">
+                    <div className="row-one">
+                      <strong>{platform.name}</strong>
+                      <p className="text-secondary">
+                        {platform.address} <br />
+                        {platform.city} {platform.state} {platform.zip} <br />
+                        <br />
+                        {platform.phone} <br />
+                        {platform.email} <br />
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -71,7 +83,7 @@ export default class PlatformContact extends React.Component {
             align-content: center;
             align-items: center;
             height: 100%;
-            margin-top: -100px;
+            margin-top: -130px;
           }
 
           .text {

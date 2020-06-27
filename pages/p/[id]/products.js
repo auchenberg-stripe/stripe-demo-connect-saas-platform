@@ -1,8 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import PlatformLayout from '../../../components/platformLayout';
 import API from '../../../helpers/api';
 import PlatformProductsList from '../../../components/platformProductsList';
+import PlatformNav from '../../../components/platformNav';
+import PlatformLayout from '../../../components/platformLayout';
 
 export default class PlatformProducts extends React.Component {
   static async getInitialProps(context) {
@@ -33,17 +34,24 @@ export default class PlatformProducts extends React.Component {
         title={'Products - ' + this.props.platform.name}
       >
         <div className="platform-products">
-          <div className="row full-height">
-            <div className="col-12">
-              <h1>Our wholesale products</h1>
-              <PlatformProductsList list={this.props.products} />
+          <div className="container-fluid">
+            <PlatformNav platform={this.props.platform} />
+          </div>
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-12">
+                <h1>Our wholesale products</h1>
+                <PlatformProductsList
+                  list={this.props.products}
+                  platform={this.props.platform}
+                />
+              </div>
             </div>
           </div>
         </div>
         <style jsx>{`
           .platform-products {
             width: 100%;
-            height: 100%;
           }
 
           h1 {

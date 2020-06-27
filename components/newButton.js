@@ -13,11 +13,16 @@ function NewButton(props) {
           {props.tipBody}
         </div>
       )}
-      <Link href={props.link}>
-        <a ref={target} className="btn btn-primary btn-new">
-          + {props.label}
-        </a>
-      </Link>
+
+      <a
+        href={props.link}
+        ref={target}
+        target="_blank"
+        className="btn btn-primary btn-new"
+      >
+        + {props.label}
+      </a>
+
       <style jsx>
         {`
           .new-button {

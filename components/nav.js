@@ -16,13 +16,18 @@ class Nav extends React.Component {
 
     let logoSrc = '/static/logo.svg';
 
+    let navClass = 'navbar navbar-fixed navbar-expand-lg ';
+
     if (this.props.isDashboard) {
       logoSrc = '/static/logo_dark.svg';
+      navClass += ' navbar-light';
+    } else {
+      navClass += ' navbar-dark';
     }
 
     return (
       <div className={className}>
-        <nav className="navbar navbar-fixed navbar-expand-lg navbar-light">
+        <nav className={navClass}>
           <ul className="navbar-nav mr-auto">
             <li className="navitem d-flex">
               <Link href="/">

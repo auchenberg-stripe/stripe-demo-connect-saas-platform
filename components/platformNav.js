@@ -8,14 +8,9 @@ class PlatformNav extends React.Component {
   }
 
   render() {
-    let className =
-      'app ' + this.props.width && this.props.width == 'full'
-        ? 'container-fluid nav-fullwidth'
-        : 'container';
-
     return (
-      <div className={className}>
-        <nav className="navbar navbar-fixed navbar-expand-lg navbar-light">
+      <div className="navigation">
+        <nav className="navbar navbar-expand-lg navbar-light">
           <ul className="navbar-nav mr-auto">
             <li className="navitem d-flex">
               <Link href={'/p/' + this.props.platform.slug}>
@@ -42,41 +37,39 @@ class PlatformNav extends React.Component {
               </Link>
             </li>
           </ul>
-
-          <style jsx>{`
-            :global(.nav-fullwidth) {
-              padding-left: 50px;
-            }
-
-            .navbar {
-              margin: 32px 0 32px 0;
-              padding: 0;
-              height: 45px;
-            }
-
-            .navbar-brand {
-              display: flex;
-              align-content: center;
-            }
-
-            .logo {
-              align-self: center;
-            }
-
-            .brand {
-              background: #7cbfbb;
-              width: 60px;
-              height: 60px;
-              padding: 5px;
-
-              word-wrap: break-word;
-              color: #fff;
-              font-size: 12px;
-              line-height: 16px;
-              font-weight: bold;
-            }
-          `}</style>
         </nav>
+        <style jsx>{`
+          .navigation {
+            padding: 10px 0;
+          }
+          .navbar {
+            margin: 0;
+            padding: 0;
+            height: 70px;
+          }
+
+          .navbar-brand {
+            display: flex;
+            align-content: center;
+          }
+
+          .logo {
+            align-self: center;
+          }
+
+          .brand {
+            background: #7cbfbb;
+            width: 60px;
+            height: 60px;
+            padding: 5px;
+
+            word-wrap: break-word;
+            color: #fff;
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: bold;
+          }
+        `}</style>
       </div>
     );
   }

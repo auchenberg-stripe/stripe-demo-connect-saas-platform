@@ -1,66 +1,104 @@
 import Link from 'next/link';
+import {loadStripe} from '@stripe/stripe-js';
+import getConfig from 'next/config';
+import API from '../helpers/api';
 
-export default function PlatformProductsList(props) {
-  const list = props.list ? [...props.list] : [];
-  if (list.length < 6) {
-    while (list.length < 6) {
-      list.push({id: Math.random()});
+let publicKey = getConfig().publicRuntimeConfig.stripe.publicKey;
+
+export default class PlatformProductsList extends React.Component {
+  constructor(props) {
+    super();
+    this.props = props;
+
+    this.stripePromise = loadStripe(publicKey, {
+      stripeAccount: this.props.platform.stripe.stripeUserId,
+    });
+  }
+
+  async buyProduct(product) {
+    try {
+      let purchase = await API.makeRequest('post', '/api/purchase', {
+        platformId: this.props.platform.platformId,
+        priceId: product.price.id,
+      });
+
+      if (purchase.id) {
+        const stripe = await this.stripePromise;
+        stripe.redirectToCheckout({
+          sessionId: purchase.id,
+        });
+      }
+    } catch (err) {
+      console.log('error', err);
     }
   }
-  let listItems = [];
 
-  if (list) {
-    listItems = list.map((item) => (
-      <li className="item" key={item.id}>
-        {item.name && (
-          <>
-            {<img src={item.images} />}
-            <h4>{item.name}</h4>
-            <a
-              target="_blank"
-              className="btn btn-primary"
-              href={'https://dashboard.stripe.com/test/products/' + item.id}
-            >
-              Add to cart
-            </a>
-          </>
-        )}
+  render() {
+    const list = this.props.list;
+    let listItems;
+
+    if (list) {
+      listItems = list.map((item) => {
+        let price = '';
+
+        if (item.price) {
+          price = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: item.price.currency,
+          }).format(item.price.unit_amount / 100);
+        }
+
+        return (
+          <li className="item" key={item.id}>
+            {item.name && (
+              <>
+                {<img src={item.images} />}
+                <h4>{item.name}</h4>
+                <p>{price}</p>
+                <a
+                  target="_blank"
+                  className="btn btn-primary"
+                  onClick={this.buyProduct.bind(this, item)}
+                >
+                  Buy now
+                </a>
+              </>
+            )}
+            <style jsx>{`
+              .item {
+                height: 400px;
+                position: relative;
+
+                border: 0;
+                border-radius: 4px;
+                text-align: center;
+              }
+
+              .item h4 {
+                margin: 0;
+                padding: 0;
+                font-size: 14px;
+                padding-bottom: 14px;
+              }
+
+              .item img {
+                width: 100%;
+                height: 240px;
+                object-fit: contain;
+                object-position: center center;
+                margin-bottom: 20px;
+              }
+            `}</style>
+          </li>
+        );
+      });
+    }
+
+    return (
+      <ul className="products-list">
+        {listItems}
+
         <style jsx>{`
-          .item {
-            height: 300px;
-            position: relative;
-
-            border: 0;
-            border-radius: 4px;
-            text-align: center;
-          }
-          .item h4 {
-            margin: 0;
-            padding: 0;
-            font-size: 14px;
-          }
-
-          .item a {
-            margin-top: 20px;
-          }
-
-          .item img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            object-position: bottom;
-            margin-bottom: 20px;
-          }
-        `}</style>
-      </li>
-    ));
-  }
-
-  return (
-    <ul className="products-list">
-      {listItems}
-
-      <style jsx>{`
         .products-list {
           list-style: none;
           padding: 0;
@@ -69,7 +107,6 @@ export default function PlatformProductsList(props) {
           display: grid;
           grid-template-columns: repeat(1, 1fr);
           grid-gap: 30px;
-          grid-auto-rows: minmax(100px, auto);
         }
 
         @media (min-width: 768px) {
@@ -84,6 +121,7 @@ export default function PlatformProductsList(props) {
           }
         }        
       `}</style>
-    </ul>
-  );
+      </ul>
+    );
+  }
 }

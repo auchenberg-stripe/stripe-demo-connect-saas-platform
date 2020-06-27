@@ -26,11 +26,11 @@ export default class PlatformHome extends React.Component {
       >
         <div className="platform-home">
           <div className="row full-height">
-            <div className="col-6 no-spacer">
+            <div className="col-lg-6 no-spacer">
               <div className="platform-image"></div>
             </div>
 
-            <div className="col-6 no-spacer">
+            <div className="col-lg-6">
               <PlatformNav platform={this.props.platform} />
 
               <div className="text-wrap">
@@ -63,7 +63,7 @@ export default class PlatformHome extends React.Component {
             font-size: 70px;
             font-weight: 600;
             color: #202020;
-            width: 70%;
+            width: 100%;
             padding: 0;
             margin: 0 0 30px 0;
           }
@@ -73,24 +73,16 @@ export default class PlatformHome extends React.Component {
             align-content: center;
             align-items: center;
             height: 100%;
-            margin-top: -100px;
+            margin-top: -130px;
           }
 
           .text {
-            max-width: 500px;
+            max-width: 330px;
             margin: 0 auto;
           }
 
           .no-spacer {
             padding: 0;
-          }
-
-          @media (min-width: 768px) {
-            .popover {
-              padding: 40px;
-              width: 500px;
-              max-width: 500px;
-            }
           }
         `}</style>
       </PlatformLayout>

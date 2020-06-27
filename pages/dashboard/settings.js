@@ -6,7 +6,6 @@ import API from '../../helpers/api';
 import DashboardPlatformSettings from '../../components/dashboardPlatformSettings';
 import DashboardHeader from '../../components/dashboardHeader';
 
-
 class Dashboard extends React.Component {
   constructor(props) {
     super();
@@ -28,7 +27,7 @@ class Dashboard extends React.Component {
   disconnectStripeAccount = async () => {
     await API.makeRequest('post', '/api/profile/disconnect_stripe');
     redirect('/dashboard/settings');
-  };  
+  };
 
   componentDidMount() {
     // TODO: Move this to a server side check
@@ -43,6 +42,7 @@ class Dashboard extends React.Component {
         isAuthenticated={this.props.isAuthenticated}
         userProfile={this.props.userProfile}
         title="Platform settings"
+        isDashboard="true"
       >
         <div className="dashboard">
           <DashboardHeader
@@ -64,20 +64,24 @@ class Dashboard extends React.Component {
               <DashboardPlatformSettings platform={this.props.platform} />
 
               {this.props.platform.stripe && (
-            <>
-            <h3>Stripe</h3>
-              <button type="submit" className="btn-submit btn btn-secondary" onClick={this.disconnectStripeAccount}>
-              Disconnect Stripe account
-            </button>
-            </>
-          )}
-
-
-
+                <>
+                  <h3>Stripe</h3>
+                  <button
+                    type="submit"
+                    className="btn-submit btn btn-secondary"
+                    onClick={this.disconnectStripeAccount}
+                  >
+                    Disconnect Stripe account
+                  </button>
+                </>
+              )}
             </div>
           </div>
         </div>
         <style jsx>{`
+          .dashboard {
+            padding-bottom: 50px;
+          }
           .dashboard h3 {
             font-size: 14px;
             font-weight: bold;

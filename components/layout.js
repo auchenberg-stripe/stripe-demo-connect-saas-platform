@@ -30,21 +30,23 @@ const Layout = (props) => (
     <div
       className={
         'app ' +
-        (props.isSplashPage && props.isSplashPage == 'true' ? 'page-splash ' : '')
+        (props.isSplashPage && props.isSplashPage == 'true'
+          ? 'page-splash '
+          : '')
       }
     >
-
-    <Nav
-      isAuthenticated={props.isAuthenticated}
-      isDashboard={props.isDashboard}
-      userProfile={props.userProfile}
-      width={props.width}
-    />
-
+      <Nav
+        isAuthenticated={props.isAuthenticated}
+        isDashboard={props.isDashboard}
+        userProfile={props.userProfile}
+        width={props.width}
+      />
 
       <div
         className={
-          (props.width && props.width == 'full' ? 'container-fluid ' : 'container content-wrapper')
+          props.width && props.width == 'full'
+            ? 'container-fluid '
+            : 'container content-wrapper'
         }
       >
         {props.children}
@@ -71,11 +73,11 @@ const Layout = (props) => (
       }
 
       :global(a) {
-        color: #A96851;
+        color: #a96851;
       }
 
       :global(a:hover) {
-        color: #A96851;
+        color: #a96851;
       }
 
       :global(.splash-image) {
@@ -113,7 +115,7 @@ const Layout = (props) => (
       }
 
       :global(.btn-primary) {
-        background: #FACB52;
+        background: #facb52;
         box-shadow: 0px 5px 50px rgba(250, 203, 82, 0.5);
         color: #000;
       }
@@ -121,7 +123,7 @@ const Layout = (props) => (
       :global(.btn-primary:hover) {
         background: #efac00;
         color: #000;
-      }      
+      }
 
       :global(.btn-secondary) {
         background: #fff;
@@ -191,6 +193,7 @@ const Layout = (props) => (
         display: flex;
         align-items: center;
         height: 100%;
+        margin-top: -109px;
       }
 
       :global(.supporting-text) {
@@ -280,23 +283,23 @@ const Layout = (props) => (
       .content-wrapper {
         height: 100%;
       }
-      
+
       .page-splash {
         width: 100%;
-            height: 100%;
-            position: relative;
-            object-fit: cover;
-            vertical-align: bottom;
+        height: 100%;
+        position: relative;
+        object-fit: cover;
+        vertical-align: bottom;
 
-            background: linear-gradient(
-                0deg,
-                rgba(255, 255, 255, 0) 50%,
-                #000000 100%
-              ),
-              url(https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3356&q=80)
-                no-repeat;
-            background-size: cover;
-            background-position: center center;        
+        background: linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0) 50%,
+            #000000 100%
+          ),
+          url(https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3356&q=80)
+            no-repeat;
+        background-size: cover;
+        background-position: center center;
       }
 
       .api-warning p {

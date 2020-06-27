@@ -20,6 +20,7 @@ export default async (req, res) => {
         'email',
         'slug',
         'description',
+        'stripe',
       )
       .value();
 
