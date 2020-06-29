@@ -72,8 +72,7 @@ export default class LoginForm extends Component {
       <>
         <div className="login">
           <p className="supporting-text">
-            You can sign in with your own account, or use one of our demo
-            accounts.
+            You can sign in with your own account, or our demo account.
           </p>
           <form onSubmit={this.handleSubmit}>
             <button

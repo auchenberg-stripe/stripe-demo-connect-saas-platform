@@ -12,18 +12,17 @@ class Signup extends React.Component {
         isSplashPage="true"
       >
         <div className="page-signup center-center">
-              <div className="box popover">
-                <h1>Create an platform</h1>
-                <p className="supporting-text">
-                  Create a new platform, or sign in with one of{' '}
-                  <a href="/login">our demo accounts on login</a>
-                </p>
-                <SignupForm />
-              </div>
+          <div className="box popover">
+            <h1>Create an platform</h1>
+            <p className="supporting-text">
+              Create a new platform, or sign in with a{' '}
+              <a href="/login">demo account</a>
+            </p>
+            <SignupForm />
+          </div>
         </div>
         <style jsx>{`
           .page-signup {
-
           }
         `}</style>
       </Layout>

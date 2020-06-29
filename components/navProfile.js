@@ -52,7 +52,7 @@ class NavProfile extends React.Component {
         <>
           <li className="navitem d-flex">
             <Link href="/signup">
-              <a className="btn">Create account</a>
+              <a className="btn">Create platform</a>
             </Link>
           </li>
 
