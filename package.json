@@ -5,7 +5,8 @@
     "dev": "next",
     "build": "next build",
     "gcp-build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "deploy": "gcloud app deploy"
   },
   "repository": {
     "type": "git",
