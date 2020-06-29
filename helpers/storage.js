@@ -17,7 +17,7 @@ class Storage {
       adapter = new GcloudAdapter('database.json', {
         projectId: process.env.GOOGLE_CLOUD_PROJECT,
         keyFilename: 'database.json',
-        bucketName: 'roastery-280800',
+        bucketName: 'roastery-280800.appspot.com',
       });
     } else {
       adapter = new FileSync(this.path);
