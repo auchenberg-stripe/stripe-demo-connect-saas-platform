@@ -4,7 +4,7 @@ const stringify = (obj) => JSON.stringify(obj, null, 2);
 
 class GcloudAdapter {
   constructor(
-    source = 'db.json',
+    source = 'database.json',
     {
       defaultValue = {},
       serialize = stringify,
@@ -14,7 +14,7 @@ class GcloudAdapter {
       bucketName,
     } = {},
   ) {
-    this.source = source;
+    this.source = keyFilename;
     this.defaultValue = defaultValue;
     this.serialize = serialize;
     this.deserialize = deserialize;
